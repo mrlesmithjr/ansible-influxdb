@@ -1,0 +1,14 @@
+---
+# defaults file for ansible-influxdb
+config_influxdb_databases: true
+influxdb_databases:
+  - host: 'localhost'
+    name: 'site'
+    state: 'present'
+influxdb_debian_pre_reqs:
+  - 'apt-transport-https'
+  - 'python-pip'
+influxdb_debian_repo: 'deb https://repos.influxdata.com/{{ ansible_distribution|lower }} {{ ansible_distribution_release|lower }} stable'
+influxdb_debian_repo_key: 'https://repos.influxdata.com/influxdb.key'
+influxdb_python_modules:
+  - 'influxdb'

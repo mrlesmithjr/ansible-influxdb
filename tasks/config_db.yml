@@ -1,0 +1,25 @@
+---
+- name: config_db | Installing Python Modules
+  pip:
+    name: "{{ item }}"
+    state: "present"
+  with_items: '{{ influxdb_python_modules }}'
+
+- name: config_db | Ensuring InfluxDB Is Running
+  service:
+    name: "influxdb"
+    state: "started"
+  when: ansible_distribution == "Debian"
+
+- name: config_db | Ensuring InfluxDB Is Running
+  service:
+    name: "influxdb-server"
+    state: "started"
+  when: ansible_distribution == "Ubuntu"
+
+- name: config_db | Creating InfluxDB(s)
+  influxdb_database:
+    hostname: "{{ item.host }}"
+    database_name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  with_items: '{{ influxdb_databases }}'
