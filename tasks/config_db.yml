@@ -9,15 +9,6 @@
   service:
     name: "influxdb"
     state: "started"
-  when: >
-        ansible_distribution == "Debian" or
-        ansible_os_family == "RedHat"
-
-- name: config_db | Ensuring InfluxDB Is Running
-  service:
-    name: "influxdb-server"
-    state: "started"
-  when: ansible_distribution == "Ubuntu"
 
 - name: config_db | Creating InfluxDB(s)
   influxdb_database:
