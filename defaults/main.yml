@@ -12,3 +12,7 @@ influxdb_debian_repo: 'deb https://repos.influxdata.com/{{ ansible_distribution|
 influxdb_debian_repo_key: 'https://repos.influxdata.com/influxdb.key'
 influxdb_python_modules:
   - 'influxdb'
+influxdb_redhat_pre_reqs:
+  - 'python-pip'
+influxdb_redhat_repo: 'https://repos.influxdata.com/rhel/\$releasever/\$basearch/stable'
+influxdb_redhat_repo_key: 'https://repos.influxdata.com/influxdb.key'
