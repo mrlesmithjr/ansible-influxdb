@@ -5,6 +5,11 @@ influxdb_databases:
   - host: 'localhost'
     name: 'site'
     state: 'present'
+    retention_policy: # Defines the retention policy
+      enabled: true
+      name: 'test-1w'
+      duration: '1w' # Define in hour(h), days(d), weeks(w) or Infinite(INF)
+      replication: '1'
 influxdb_debian_pre_reqs:
   - 'apt-transport-https'
   - 'python-pip'
