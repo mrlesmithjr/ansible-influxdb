@@ -14,7 +14,7 @@ Role Variables
 ```
 ---
 # defaults file for ansible-influxdb
-config_influxdb_databases: true
+influxdb_config_databases: true
 influxdb_databases:
   - host: 'localhost'
     name: 'site'

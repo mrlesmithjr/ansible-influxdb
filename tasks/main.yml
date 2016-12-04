@@ -8,4 +8,4 @@
   when: ansible_os_family == "RedHat"
 
 - include: config_db.yml
-  when: config_influxdb_databases
+  when: influxdb_config_databases
