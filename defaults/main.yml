@@ -290,3 +290,5 @@ influxdb_udp:
   # above OS max.
   read_buffer: 0
   retention_policy: ""
+
+influxdb_version: 1.4.2
