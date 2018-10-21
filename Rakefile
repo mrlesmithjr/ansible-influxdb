@@ -16,6 +16,7 @@ at_exit {
 task :default => [:test,]
 def bash cmd
     cmd = "set -o pipefail && #{cmd}"
+    print(cmd)
     system("bash -c #{cmd.shellescape}")
     cmd_status = $?
     if cmd_status != 0
