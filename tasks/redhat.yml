@@ -29,9 +29,9 @@
     name: influxdb
     baseurl: "{{ influxdb_redhat_repo }}"
     description: InfluxDB
-    gpgcheck: yes
+    gpgcheck: true
     gpgkey: "{{ influxdb_redhat_repo_key }}"
-    enabled: yes
+    enabled: true
     priority: 90
     state: present
   become: true

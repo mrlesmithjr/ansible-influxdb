@@ -1,3 +1,6 @@
+# 2018-10-21 (cc) <paul4hough@gmail.com>
+#
+---
 galaxy_info:
   author: Larry Smith Jr.
   description: An [Ansible] role to install/configure [InfluxDB]
@@ -6,18 +9,18 @@ galaxy_info:
 
   min_ansible_version: 1.2
   platforms:
-  - name: Ubuntu
-    versions:
-    - precise
-    - trusty
-    - xenial
-  - name: Debian
-    versions:
-    - jessie
-  - name: EL
-    versions:
-    - 6
-    - 7
+    - name: Ubuntu
+      versions:
+        - precise
+        - trusty
+        - xenial
+    - name: Debian
+      versions:
+        - jessie
+    - name: EL
+      versions:
+        - 6
+        - 7
 
   galaxy_tags:
     - database
