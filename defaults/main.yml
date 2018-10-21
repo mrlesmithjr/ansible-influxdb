@@ -260,7 +260,7 @@ influxdb_retention:
   # Determines whether retention policy enforcment enabled.
   enabled: true
 
-influxdb_rpc_port: 8088
+influxdb_rpc_addr: "127.0.0.1:8088"
 
 influxdb_shard_precreation:
   # The default period ahead of the endtime of a shard group that its successor

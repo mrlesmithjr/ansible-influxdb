@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
 # 2018-10-21 (cc) <paul4hough@gmail.com>
-
 import os
 import yaml
 
@@ -10,7 +8,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
 
-with open("../../defaults/main.yml", 'r') as stream:
+with open("vars/config.yml", 'r') as stream:
     defaults = yaml.load(stream)
 
 
@@ -37,7 +35,6 @@ def test_http_tcp_port(host):
     assert port.is_listening
 
 
-def test_admin_tcp_port(host):
-    port = host.socket("tcp://%s" %
-                       defaults['influxdb_rpc_addr'])
+def test_rpc_port(host):
+    port = host.socket("tcp://%s" % defaults['influxdb_rpc_addr'])
     assert port.is_listening
