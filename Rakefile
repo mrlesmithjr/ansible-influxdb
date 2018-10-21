@@ -27,6 +27,10 @@ task :test,[:flags,:opts] do |task,args|
   sh "date '+%F-%X molecule test start' > #{testout_fn}"
   bash "molecule #{args[:flags]} test #{args[:opts]} 2>&1 | tee -a #{testout_fn}"
 end
+task :verify,[:flags,:opts] do |task,args|
+  sh "date '+%F-%X molecule test start' > #{testout_fn}"
+  bash "molecule #{args[:flags]} verify #{args[:opts]} 2>&1 | tee -a #{testout_fn}"
+end
 task :converge,[:flags,:opts] do |task,args|
   sh "date '+%F-%X molecule test start' > #{testout_fn}"
   bash "molecule #{args[:flags]} converge #{args[:opts]} 2>&1 | tee -a #{testout_fn}"
