@@ -1,4 +1,6 @@
 ---
+influxdb_version: 1.6.4
+
 influxdb_admin:
   # Determines whether the admin service is enabled.
   enabled: false
@@ -300,5 +302,3 @@ influxdb_udp:
   # above OS max.
   read_buffer: 0
   retention_policy: ""
-
-influxdb_version: 1.4.2
