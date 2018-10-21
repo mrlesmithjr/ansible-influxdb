@@ -1,8 +1,24 @@
 # Molecule managed
-
 ---
-file:
-  /etc/hosts:
+package:
+  influxdb:
+    installed: true
+service:
+  influxdb:
+    enabled: true
+    running: true
+user:
+  influxdb:
     exists: true
-    owner: root
-    group: root
+    groups:
+      - influxdb
+group:
+  influxdb:
+    exists: true
+process:
+  influxd:
+    running: true
+addr:
+  tcp://0.0.0.0:8088:
+    reachable: true
+    timeout: 500
