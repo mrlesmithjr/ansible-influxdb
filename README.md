@@ -24,11 +24,28 @@ None
 
 [defaults/main.yml](defaults/main.yml)
 
+
 ## Dependencies
 
 None
 
+## Validation
+
+### Dependancies
+
+- [virtualbox](https://www.virtualbox.org/manual/ch02.html)
+- [vagrant](https://www.vagrantup.com/docs/installation/)
+- [molecule](https://molecule.readthedocs.io/en/latest/installation.html)
+- python-vagrant - pip install python-vagrant
+
+### tests
+
+```$ molecule test```
+```$ molecule test -s config```
+
 ## Example Playbook
+
+[molecule/default/playbook.yml](molecule/default/playbook.yml)
 
 ## License
 

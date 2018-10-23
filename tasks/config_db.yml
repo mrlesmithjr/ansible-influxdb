@@ -13,11 +13,13 @@
     enabled: true
   become: true
 
+
 - name: config_db | Creating InfluxDB(s)
   influxdb_database:
     hostname: "{{ item['host'] }}"
     database_name: "{{ item['name'] }}"
     state: "{{ item['state'] }}"
+    port: "{{ influxdb_http['bind_port'] }}"
   become: true
   with_items: "{{ influxdb_databases }}"
 
@@ -28,6 +30,7 @@
     policy_name: "{{ item['retention_policy']['name'] }}"
     duration: "{{ item['retention_policy']['duration'] }}"
     replication: "{{ item['retention_policy']['replication'] }}"
+    port: "{{ influxdb_http['bind_port'] }}"
   become: true
   with_items: "{{ influxdb_databases }}"
   when: >
