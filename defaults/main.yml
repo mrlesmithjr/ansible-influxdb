@@ -1,5 +1,5 @@
 ---
-influxdb_version: 1.6.4
+influxdb_version: "1.7.2"
 
 influxdb_admin:
   # Determines whether the admin service is enabled.
@@ -126,7 +126,7 @@ influxdb_debian_pre_reqs:
   - python-pip
 
 # yamllint disable-line rule:line-length
-influxdb_debian_repo: "deb https://repos.influxdata.com/{{ ansible_distribution|lower }} {{ ansible_distribution_release|lower }} stable"
+influxdb_debian_repo: "{{ 'deb https://repos.influxdata.com/' +  ansible_distribution|lower + ' ' + ansible_distribution_release|lower + ' stable' }}"
 
 influxdb_debian_repo_key: https://repos.influxdata.com/influxdb.key
 
