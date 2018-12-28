@@ -21,7 +21,7 @@ An [Ansible](https://www.ansible.com) role to install/configure [InfluxDB](https
 
 ## Build Status
 
-[![Build Status](https://travis-ci.org/mrlesmithjr/docker-influxdb.svg?branch=master)](https://travis-ci.org/mrlesmithjr/docker-influxdb)
+[![Build Status](https://travis-ci.org/mrlesmithjr/ansible-influxdb.svg?branch=master)](https://travis-ci.org/mrlesmithjr/ansible-influxdb)
 
 ## Requirements
 
