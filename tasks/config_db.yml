@@ -14,6 +14,10 @@
     enabled: true
   become: true
 
+- name: config_db | Waiting For InfluxDB
+  wait_for:
+    port: "{{ influxdb_http['bind_port'] }}"
+
 - name: config_db | Creating InfluxDB(s)
   influxdb_database:
     hostname: "{{ item['host'] }}"
