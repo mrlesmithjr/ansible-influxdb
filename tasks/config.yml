@@ -1,4 +1,38 @@
 ---
+# On first install we need to create admin user BEFORE deploying the config that enables auth
+# We need to also use the correct state for ssl - if we enable it in auth we need to use it,
+# EXCEPT after initial install to add the admin user, SSL will be off as we haven't configred it yet
+- name: config | Use SSL if we have turned on https in config
+  set_fact:
+    use_ssl: true
+  when: influxdb_http['https_enabled']|bool and not result.changed
+
+# InfluxDB needs to be running so we can create the admin user
+- name: config | Start InfluxDB to allow admin user creation
+  service:
+    name: influxdb
+    state: started
+  become: true
+  when: influxdb_admin_user is defined and influxdb_admin_password is defined
+
+- name: config | Waiting For InfluxDB
+  wait_for:
+    port: "{{ influxdb_http['bind_port'] }}"
+
+- name: config | Create InfluxDB admin user
+  influxdb_user:
+    login_username: "{{ influxdb_admin_user }}"
+    login_password: "{{ influxdb_admin_password }}"
+    hostname: "{{ ansible_fqdn }}"
+    ssl: "{{ use_ssl | default(false) }}"
+    user_name: "{{ influxdb_admin_user }}"
+    user_password: "{{ influxdb_admin_password }}"
+    admin: true
+    state: present
+  #no_log: true
+  when: influxdb_admin_user is defined and influxdb_admin_password is defined
+
+# Now we can drop the config - if it enables auth and ssl we are covered :-)
 - name: config | Configuring InfluxDB
   template:
     src: etc/influxdb/influxdb.conf.j2
