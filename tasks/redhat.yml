@@ -10,6 +10,9 @@
     ansible_os_family == "RedHat" and
     ansible_distribution != "Fedora"
 
+- name: redhat | Include version-specific vars
+  include_vars: redhat-{{ ansible_distribution_major_version }}.yml
+
 - name: redhat | Installing Pre-Reqs
   dnf:
     name: "{{ influxdb_redhat_pre_reqs }}"

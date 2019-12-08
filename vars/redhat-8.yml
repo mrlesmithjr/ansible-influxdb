@@ -1,0 +1,4 @@
+---
+# RedHat/CentOS 8 params
+influxdb_redhat_pre_reqs:
+  - python3-pip
