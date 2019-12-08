@@ -36,7 +36,7 @@
     gpgcheck: true
     gpgkey: "{{ influxdb_redhat_repo_key }}"
     enabled: true
-    priority: 90
+    priority: '90'
     state: present
   become: true
   when: ansible_distribution != "Fedora"
