@@ -29,7 +29,7 @@
     user_password: "{{ influxdb_admin_password }}"
     admin: true
     state: present
-  #no_log: true
+  no_log: true
   when: influxdb_admin_user is defined and influxdb_admin_password is defined
 
 # Now we can drop the config - if it enables auth and ssl we are covered :-)
