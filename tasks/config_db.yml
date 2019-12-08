@@ -18,12 +18,18 @@
   wait_for:
     port: "{{ influxdb_http['bind_port'] }}"
 
+- name: config_db | Use SSL if we have turned on https in config
+  set_fact:
+    use_ssl: true
+  when: influxdb_http['https_enabled']|bool
+
 - name: config_db | Creating InfluxDB(s)
   influxdb_database:
     hostname: "{{ item['host'] }}"
     database_name: "{{ item['name'] }}"
     state: "{{ item['state'] }}"
     port: "{{ influxdb_http['bind_port'] }}"
+    ssl: "{{ use_ssl | default(false) }}"
   become: true
   with_items: "{{ influxdb_databases }}"
 
@@ -35,6 +41,7 @@
     duration: "{{ item['retention_policy']['duration'] }}"
     replication: "{{ item['retention_policy']['replication'] }}"
     port: "{{ influxdb_http['bind_port'] }}"
+    ssl: "{{ use_ssl | default(false) }}"
   become: true
   with_items: "{{ influxdb_databases }}"
   when: >
