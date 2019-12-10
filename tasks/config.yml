@@ -1,4 +1,12 @@
 ---
+- name: config | Installing Python Modules
+  pip:
+    name: "{{ influxdb_python_modules }}"
+    state: present
+  become: true
+  register: result
+  until: result is successful
+
 # On first install we need to create admin user BEFORE deploying the config that enables auth
 # We need to also use the correct state for ssl - if we enable it in auth we need to use it,
 # EXCEPT after initial install to add the admin user, SSL will be off as we haven't configred it yet
