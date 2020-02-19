@@ -1,31 +1,23 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [ansible-influxdb](#ansible-influxdb)
-  - [Build Status](#build-status)
-  - [Requirements](#requirements)
-  - [Role Variables](#role-variables)
-  - [Dependencies](#dependencies)
-  - [Validation](#validation)
-    - [Dependancies](#dependancies)
-    - [tests](#tests)
-  - [Example Playbook](#example-playbook)
-  - [License](#license)
-  - [Author Information](#author-information)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # ansible-influxdb
 
-An [Ansible](https://www.ansible.com) role to install/configure [InfluxDB](https://www.influxdata.com/time-series-platform/influxdb/)
+Ansible role to install/configure InfluxDB
 
 ## Build Status
 
+### GitHub Actions
+
+![Molecule Test](https://github.com/mrlesmithjr/ansible-influxdb/workflows/Molecule%20Test/badge.svg)
+
+### Travis CI
+
 [![Build Status](https://travis-ci.org/mrlesmithjr/ansible-influxdb.svg?branch=master)](https://travis-ci.org/mrlesmithjr/ansible-influxdb)
+
+
 
 ## Requirements
 
-None
+For any required Ansible roles, review:
+[requirements.yml](requirements.yml)
 
 ## Role Variables
 
@@ -33,25 +25,9 @@ None
 
 ## Dependencies
 
-None
-
-## Validation
-
-### Dependancies
-
-- [virtualbox](https://www.virtualbox.org/manual/ch02.html)
-- [vagrant](https://www.vagrantup.com/docs/installation/)
-- [molecule](https://molecule.readthedocs.io/en/latest/installation.html)
-- python-vagrant - pip install python-vagrant
-
-### tests
-
-`$ molecule test`
-`$ molecule test -s config`
-
 ## Example Playbook
 
-[molecule/default/playbook.yml](molecule/default/playbook.yml)
+[playbook.yml](playbook.yml)
 
 ## License
 
@@ -61,6 +37,6 @@ MIT
 
 Larry Smith Jr.
 
-- [EverythingShouldBeVirtual](http://everythingshouldbevirtual.com)
-- [@mrlesmithjr](https://www.twitter.com/mrlesmithjr)
+- [@mrlesmithjr](https://twitter.com/mrlesmithjr)
 - [mrlesmithjr@gmail.com](mailto:mrlesmithjr@gmail.com)
+- [http://everythingshouldbevirtual.com](http://everythingshouldbevirtual.com)
