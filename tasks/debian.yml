@@ -25,7 +25,7 @@
 
 - name: debian | Installing InfluxDB
   apt:
-    name: "{{ 'influxdb=' + influxdb_version + '-1' }}"
+    name: "{{ 'influxdb=' + influxdb_version|string + '-1' }}"
     state: present
   become: true
   register: result
