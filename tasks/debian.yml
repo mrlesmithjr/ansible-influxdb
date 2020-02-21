@@ -1,12 +1,4 @@
 ---
-- name: debian | Installing Pre-Reqs
-  apt:
-    name: "{{ influxdb_pre_req_packages }}"
-    state: present
-  become: true
-  register: result
-  until: result is successful
-
 - name: debian | Adding InfluxDB Repo Key
   apt_key:
     url: "{{ influxdb_debian_repo_key }}"
