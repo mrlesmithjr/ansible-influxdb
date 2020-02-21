@@ -1,4 +1,5 @@
 ---
+# Need to add EPEL Repo for python2 pip
 - name: redhat | Adding EPEL Repo
   yum:
     name: epel-release
@@ -6,13 +7,13 @@
   become: true
   register: result
   until: result is successful
-  when: >
-    ansible_os_family == "RedHat" and
-    ansible_distribution != "Fedora"
+  when:
+    - ansible_distribution != "Fedora"
+    - ansible_python_version is version('3', '<')
 
 - name: redhat | Installing Pre-Reqs
   dnf:
-    name: "{{ influxdb_redhat_pre_reqs }}"
+    name: "{{ influxdb_pre_req_packages }}"
     state: present
   become: true
   register: result
@@ -21,7 +22,7 @@
 
 - name: redhat | Installing Pre-Reqs
   yum:
-    name: "{{ influxdb_redhat_pre_reqs }}"
+    name: "{{ influxdb_pre_req_packages }}"
     state: present
   become: true
   register: result

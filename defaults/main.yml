@@ -121,10 +121,6 @@ influxdb_databases:
       duration: 1w
       replication: 1
 
-influxdb_debian_pre_reqs:
-  - apt-transport-https
-  - python-pip
-
 # yamllint disable-line rule:line-length
 influxdb_debian_repo: "{{ 'deb https://repos.influxdata.com/' +  ansible_distribution|lower + ' ' + ansible_distribution_release|lower + ' stable' }}"
 
@@ -247,8 +243,6 @@ influxdb_opentsdb:
 
 influxdb_python_modules:
   - influxdb
-influxdb_redhat_pre_reqs:
-  - python-pip
 
 # yamllint disable-line rule:line-length
 influxdb_redhat_repo: https://repos.influxdata.com/rhel/\$releasever/\$basearch/stable
