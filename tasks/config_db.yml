@@ -25,7 +25,7 @@
     state: "{{ item['state'] }}"
     port: "{{ influxdb_http['bind_port'] }}"
   become: true
-  with_items: "{{ influxdb_databases }}"
+  loop: "{{ influxdb_databases }}"
 
 - name: config_db | Creating InfluxDB Retention Policies
   influxdb_retention_policy:
@@ -36,7 +36,7 @@
     replication: "{{ item['retention_policy']['replication'] }}"
     port: "{{ influxdb_http['bind_port'] }}"
   become: true
-  with_items: "{{ influxdb_databases }}"
-  when: >
-    item['retention_policy'] is defined and
-    item['retention_policy']['enabled']
+  loop: "{{ influxdb_databases }}"
+  when:
+    - item['retention_policy'] is defined
+    - item['retention_policy']['enabled']|bool

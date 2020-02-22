@@ -1,0 +1,6 @@
+---
+- name: set_facts | Setting Debian/Ubuntu Facts
+  set_fact:
+    influxdb_pre_req_packages:
+      - apt-transport-https
+  when: ansible_os_family == "Debian"
