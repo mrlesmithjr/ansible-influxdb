@@ -24,6 +24,7 @@
     database_name: "{{ item['name'] }}"
     state: "{{ item['state'] }}"
     port: "{{ influxdb_http['bind_port'] }}"
+    udp_port: "{{ influxdb_udp['bind_port'] }}"
   become: true
   loop: "{{ influxdb_databases }}"
 
@@ -35,6 +36,7 @@
     duration: "{{ item['retention_policy']['duration'] }}"
     replication: "{{ item['retention_policy']['replication'] }}"
     port: "{{ influxdb_http['bind_port'] }}"
+    udp_port: "{{ influxdb_udp['bind_port'] }}"
   become: true
   loop: "{{ influxdb_databases }}"
   when:
