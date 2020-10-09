@@ -245,7 +245,7 @@ influxdb_python_modules:
   - influxdb
 
 # yamllint disable-line rule:line-length
-influxdb_redhat_repo: https://repos.influxdata.com/rhel/\$releasever/\$basearch/stable
+influxdb_redhat_repo: https://repos.influxdata.com/rhel/$releasever/$basearch/stable
 influxdb_redhat_repo_key: https://repos.influxdata.com/influxdb.key
 
 influxdb_retention:
