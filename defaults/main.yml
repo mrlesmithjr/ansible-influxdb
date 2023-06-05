@@ -1,5 +1,5 @@
 ---
-influxdb_version: 1.8.0
+influxdb_version: 1.8.10
 
 influxdb_admin:
   # Determines whether the admin service is enabled.
