@@ -26,8 +26,8 @@ jobs:
           # - debian9
           - debian10
           - debian11
-          - fedora34
-          - fedora35
+          # - fedora34
+          # - fedora35
           - rocky8
           # - ubuntu1604
           - ubuntu1804
