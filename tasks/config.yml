@@ -1,8 +1,9 @@
 ---
 - name: config | Configuring InfluxDB
-  template:
+  ansible.builtin.template:
     src: etc/influxdb/influxdb.conf.j2
     dest: /etc/influxdb/influxdb.conf
+    mode: u=rw,g=r,o=r
   become: true
   notify:
     - restart influxdb

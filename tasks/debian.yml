@@ -1,6 +1,6 @@
 ---
 - name: debian | Installing Pre-Reqs
-  apt:
+  ansible.builtin.apt:
     name: "{{ influxdb_pre_req_packages }}"
     state: present
   become: true
@@ -8,7 +8,7 @@
   until: result is successful
 
 - name: debian | Adding InfluxDB Repo Key
-  apt_key:
+  ansible.builtin.apt_key:
     url: "{{ influxdb_debian_repo_key }}"
     state: present
   become: true
@@ -16,7 +16,7 @@
   until: result is successful
 
 - name: debian | Adding InfluxDB Repo
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "{{ influxdb_debian_repo }}"
     state: present
   become: true
@@ -24,8 +24,8 @@
   until: result is successful
 
 - name: debian | Installing InfluxDB
-  apt:
-    name: "{{ 'influxdb=' + influxdb_version|string + '-1' }}"
+  ansible.builtin.apt:
+    name: "{{ 'influxdb=' + influxdb_version | string + '-1' }}"
     state: present
   become: true
   register: result
