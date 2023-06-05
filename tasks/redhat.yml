@@ -1,6 +1,6 @@
 ---
 - name: redhat | Adding InfluxDB Repo
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: influxdb
     baseurl: "{{ influxdb_redhat_repo }}"
     description: InfluxDB
@@ -13,7 +13,7 @@
   when: ansible_distribution != "Fedora"
 
 - name: redhat | Installing InfluxDB
-  yum:
+  ansible.builtin.yum:
     name: influxdb
     state: present
   become: true

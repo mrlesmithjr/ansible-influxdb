@@ -1,5 +1,5 @@
 ---
-influxdb_version: 1.8.0
+influxdb_version: 1.8.10
 
 influxdb_admin:
   # Determines whether the admin service is enabled.
@@ -122,9 +122,9 @@ influxdb_databases:
       replication: 1
 
 # yamllint disable-line rule:line-length
-influxdb_debian_repo: "{{ 'deb https://repos.influxdata.com/' +  ansible_distribution|lower + ' ' + ansible_distribution_release|lower + ' stable' }}"
+influxdb_debian_repo: "{{ 'deb https://repos.influxdata.com/' + ansible_distribution | lower + ' ' + ansible_distribution_release | lower + ' stable' }}"
 
-influxdb_debian_repo_key: https://repos.influxdata.com/influxdb.key
+influxdb_debian_repo_key: https://repos.influxdata.com/influxdata-archive_compat.key
 
 influxdb_graphite:
   # number of batches that may be pending in memory
@@ -246,7 +246,7 @@ influxdb_python_modules:
 
 # yamllint disable-line rule:line-length
 influxdb_redhat_repo: https://repos.influxdata.com/rhel/$releasever/$basearch/stable
-influxdb_redhat_repo_key: https://repos.influxdata.com/influxdb.key
+influxdb_redhat_repo_key: https://repos.influxdata.com/influxdata-archive_compat.key
 
 influxdb_retention:
   # The interval of time when retention policy enforcement checks run.

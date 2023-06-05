@@ -1,6 +1,6 @@
 ---
 - name: config_db | Installing Python Modules
-  pip:
+  ansible.builtin.pip:
     name: "{{ influxdb_python_modules }}"
     state: present
   become: true
@@ -8,18 +8,18 @@
   until: result is successful
 
 - name: config_db | Ensuring InfluxDB Is Running And Enabled On Boot
-  service:
+  ansible.builtin.service:
     name: influxdb
     state: started
     enabled: true
   become: true
 
 - name: config_db | Waiting For InfluxDB
-  wait_for:
+  ansible.builtin.wait_for:
     port: "{{ influxdb_http['bind_port'] }}"
 
 - name: config_db | Creating InfluxDB(s)
-  influxdb_database:
+  community.general.database.influxdb.influxdb_database:
     hostname: "{{ item['host'] }}"
     database_name: "{{ item['name'] }}"
     state: "{{ item['state'] }}"
@@ -29,7 +29,7 @@
   loop: "{{ influxdb_databases }}"
 
 - name: config_db | Creating InfluxDB Retention Policies
-  influxdb_retention_policy:
+  community.general.database.influxdb.influxdb_retention_policy:
     hostname: "{{ item['host'] }}"
     database_name: "{{ item['name'] }}"
     policy_name: "{{ item['retention_policy']['name'] }}"

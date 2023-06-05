@@ -3,8 +3,9 @@
   hosts: all
   tasks:
     - name: "Include ansible-bootstrap-python"
-      include_role:
+      ansible.builtin.include_role:
         name: "ansible-bootstrap-python"
+
     - name: "Include ansible-influxdb"
-      include_role:
+      ansible.builtin.include_role:
         name: "ansible-influxdb"
