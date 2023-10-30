@@ -19,7 +19,7 @@
     port: "{{ influxdb_http['bind_port'] }}"
 
 - name: config_db | Creating InfluxDB(s)
-  community.general.database.influxdb.influxdb_database:
+  community.general.influxdb_database:
     hostname: "{{ item['host'] }}"
     database_name: "{{ item['name'] }}"
     state: "{{ item['state'] }}"
@@ -29,7 +29,7 @@
   loop: "{{ influxdb_databases }}"
 
 - name: config_db | Creating InfluxDB Retention Policies
-  community.general.database.influxdb.influxdb_retention_policy:
+  community.general.influxdb_retention_policy:
     hostname: "{{ item['host'] }}"
     database_name: "{{ item['name'] }}"
     policy_name: "{{ item['retention_policy']['name'] }}"
